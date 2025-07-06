@@ -38,6 +38,12 @@ const startServer = async () => {
   try {
     await connectDB();
 
+    if(ENV.NODE_ENV !=="production"){
+      app.listen(ENV.PORT, () => {
+      console.log("Server is running on port 3000");
+    });
+    }
+
     app.listen(ENV.PORT, () => {
       console.log("Server is running on port 3000");
     });
@@ -47,3 +53,5 @@ const startServer = async () => {
 };
 
 startServer();
+
+export default app
